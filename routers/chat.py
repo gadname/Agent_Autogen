@@ -6,8 +6,8 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-@router.post("/design_discussion", response_model=ChatResponse)
-async def design_discussion(request: ChatRequest):
+@router.post("/software_design_discussion", response_model=ChatResponse)
+async def software_design_discussion(request: ChatRequest):
     """
     ユーザーの要件に基づいて設計議論を開始するエンドポイント
     """
@@ -20,8 +20,3 @@ async def design_discussion(request: ChatRequest):
         return ChatResponse(conversation=result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.get("/health")
-async def health_check():
-    return {"status": "healthy"}
