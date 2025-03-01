@@ -1,0 +1,17 @@
+# アプリケーションの全体像を一目で把握可能 
+version: '3'
+services:
+  # コンテナ名
+  fastapi_autogen:
+    # Dockerfileを指定
+    build: .
+    # ポートマッピング
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    # コンテナ内で使用される環境変数
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+    # depends_on
