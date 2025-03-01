@@ -1,21 +1,21 @@
 from fastapi import HTTPException
 from schema import ChatRequest, ChatResponse
-from services.group_chat import counseling_group
+from services.group_chat import software_design_group
 from fastapi import APIRouter
 
 router = APIRouter()
 
 
-@router.post("/therapist_discussion", response_model=ChatResponse)
-async def therapist_discussion(request: ChatRequest):
+@router.post("/design_discussion", response_model=ChatResponse)
+async def design_discussion(request: ChatRequest):
     """
-    ユーザーの悩みに基づいてセラピスト間の議論を開始するエンドポイント
+    ユーザーの要件に基づいて設計議論を開始するエンドポイント
     """
     try:
-        # セラピスト間の議論を開始
-        result = counseling_group.start_therapist_discussion(
+        # 設計議論を開始
+        result = software_design_group.start_software_design_discussion(
             user_message=request.message,
-            max_turns=request.max_turns or 15,  # デフォルトは15ターン
+            max_turns=request.max_turns or 30,
         )
         return ChatResponse(conversation=result)
     except Exception as e:
