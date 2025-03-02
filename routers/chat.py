@@ -12,7 +12,6 @@ async def software_design_discussion(request: ChatRequest):
     ユーザーの要件に基づいて設計議論を開始するエンドポイント
     """
     try:
-        # 設計議論を開始
         result = software_design_group.start_software_design_discussion(
             user_message=request.message,
             max_turns=request.max_turns or 30,
